@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  [data-theme="ocean-orange"] {
+    --background: #F9F9F9;
+    --foreground: #092634;
+    
+    --card: #FFFFFF;
+    --card-foreground: #092634;
+    
+    --border: #E2E8F0;
+
+    --primary: #004E72;
+    --primary-foreground: #FFFFFF;
+    
+    --secondary: #092634;
+    --secondary-foreground: #FFFFFF;
+    
+    --accent: #FF6E42;
+    --accent-foreground: #FFFFFF;
+    
+    --warning: #F59E0B;
+    --warning-foreground: #FFFFFF;
+    
+    --muted: #E2E8F0;
+    --muted-foreground: #64748B;
+  }
+
+  [data-theme="natural-green"] {
+    --background: #E8D1BA;
+    --foreground: #2A5945;
+    
+    --card: #F2DEC9;
+    --card-foreground: #2A5945;
+    
+    --border: #D1B89F;
+
+    --primary: #2A5945;
+    --primary-foreground: #FFFFFF;
+    
+    --secondary: #EDA335;
+    --secondary-foreground: #1E3F31;
+    
+    --accent: #EDA335;
+    --accent-foreground: #1E3F31;
+    
+    --warning: #9DD0B6;
+    --warning-foreground: #1E3F31;
+    
+    --muted: #D1B89F;
+    --muted-foreground: #2A5945;
+  }
+
+  [data-theme="riviera-terracotta"] {
+    --background: #F3ECDE;
+    --foreground: #183451;
+    
+    --card: #F8F3E9;
+    --card-foreground: #183451;
+    
+    --border: #E6DBC6;
+
+    --primary: #183451;
+    --primary-foreground: #FFFFFF;
+    
+    --secondary: #A9501C;
+    --secondary-foreground: #FFFFFF;
+    
+    --accent: #A9501C;
+    --accent-foreground: #FFFFFF;
+    
+    --warning: #D4AF83;
+    --warning-foreground: #183451;
+    
+    --muted: #E6DBC6;
+    --muted-foreground: #183451;
+  }
+
+  [data-theme="original-green"] {
+    --background: #F8FAFC;
+    --foreground: #2E2910;
+    
+    --card: #FFFFFF;
+    --card-foreground: #2E2910;
+    
+    --border: #E2E8F0;
+
+    --primary: #2C5745;
+    --primary-foreground: #FFFFFF;
+    
+    --secondary: #2A5945;
+    --secondary-foreground: #FFFFFF;
+    
+    --accent: #EB7D00;
+    --accent-foreground: #FFFFFF;
+    
+    --warning: #EDA335;
+    --warning-foreground: #FFFFFF;
+    
+    --muted: #EBE3A7;
+    --muted-foreground: #2E2910;
+  }
+
+  [data-theme="dark"] {
+    --background: #101817;
+    --foreground: #F3F5F3;
+    
+    --card: #1B2925;
+    --card-foreground: #F3F5F3;
+    
+    --border: #30413B;
+
+    --primary: #2A5945;
+    --primary-foreground: #F3F5F3;
+    
+    --secondary: #EDA335;
+    --secondary-foreground: #1E3F31;
+    
+    --accent: #FF6E42;
+    --accent-foreground: #F3F5F3;
+    
+    --warning: #EDA335;
+    --warning-foreground: #1E3F31;
+    
+    --muted: #1B2925;
+    --muted-foreground: #AAB8B2;
+    
+    --sidebar: #16231F;
+    --sidebar-foreground: #F3F5F3;
+  }
+}
+
+/* Base Form & Input Dark Mode & Theme Styles */
+select, input, textarea {
+  color: var(--foreground);
+}
+
+select option, optgroup {
+  background-color: var(--card);
+  color: var(--card-foreground);
+}
+
+[data-theme="dark"],
+.dark {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] select,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+.dark select,
+.dark input,
+.dark textarea {
+  color-scheme: dark;
+  color: #F3F5F3;
+  border-color: #30413B;
+  background-color: #101817;
+}
+
+[data-theme="dark"] select option,
+[data-theme="dark"] select optgroup,
+.dark select option,
+.dark select optgroup {
+  background-color: #1B2925 !important;
+  color: #F3F5F3 !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder,
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #AAB8B2;
+}
+
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator,
+[data-theme="dark"] input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.9);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* Text color fixes for dark theme */
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-900,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: #F3F5F3;
+}
+
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-500 {
+  color: #AAB8B2;
+}
+
+[data-theme="dark"] .bg-white,
+.dark .bg-white {
+  background-color: #1B2925;
+  color: #F3F5F3;
+}
+
