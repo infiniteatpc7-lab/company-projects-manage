@@ -19,10 +19,11 @@ class ClientController extends Controller
 
         if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('company_name', 'ilike', '%' . $search . '%')
-                  ->orWhere('contact_person', 'ilike', '%' . $search . '%')
-                  ->orWhere('email', 'ilike', '%' . $search . '%');
+            $like = config('database.default') === 'pgsql' ? 'ilike' : 'like';
+            $query->where(function ($q) use ($search, $like) {
+                $q->where('company_name', $like, '%' . $search . '%')
+                  ->orWhere('contact_person', $like, '%' . $search . '%')
+                  ->orWhere('email', $like, '%' . $search . '%');
             });
         }
 

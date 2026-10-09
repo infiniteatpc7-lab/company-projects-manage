@@ -18,11 +18,12 @@ class ActivityLogController extends Controller
 
         if ($request->has('search')) {
             $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('action', 'ilike', "%{$search}%")
-                  ->orWhere('subject_type', 'ilike', "%{$search}%")
-                  ->orWhereHas('user', function ($uq) use ($search) {
-                      $uq->where('name', 'ilike', "%{$search}%");
+            $like = config('database.default') === 'pgsql' ? 'ilike' : 'like';
+            $query->where(function ($q) use ($search, $like) {
+                $q->where('action', $like, "%{$search}%")
+                  ->orWhere('subject_type', $like, "%{$search}%")
+                  ->orWhereHas('user', function ($uq) use ($search, $like) {
+                      $uq->where('name', $like, "%{$search}%");
                   });
             });
         }

@@ -20,10 +20,11 @@ class ProjectController extends Controller
 
         if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'ilike', '%' . $search . '%')
-                  ->orWhereHas('client', function ($q2) use ($search) {
-                      $q2->where('company_name', 'ilike', '%' . $search . '%');
+            $like = config('database.default') === 'pgsql' ? 'ilike' : 'like';
+            $query->where(function ($q) use ($search, $like) {
+                $q->where('name', $like, '%' . $search . '%')
+                  ->orWhereHas('client', function ($q2) use ($search, $like) {
+                      $q2->where('company_name', $like, '%' . $search . '%');
                   });
             });
         }

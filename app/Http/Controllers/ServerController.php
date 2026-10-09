@@ -24,9 +24,10 @@ class ServerController extends Controller
 
         if ($request->has('search')) {
             $search = $request->input('search');
-            $query->where('name', 'ilike', "%{$search}%")
-                  ->orWhereHas('client', function ($q) use ($search) {
-                      $q->where('company_name', 'ilike', "%{$search}%");
+            $like = config('database.default') === 'pgsql' ? 'ilike' : 'like';
+            $query->where('name', $like, "%{$search}%")
+                  ->orWhereHas('client', function ($q) use ($search, $like) {
+                      $q->where('company_name', $like, "%{$search}%");
                   });
         }
 
