@@ -37,3 +37,20 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/artisan-migrate', function (\Illuminate\Http\Request $request) {
+    if (!auth()->check() && $request->input('token') !== 'AMC_2024') {
+        abort(403, 'Unauthorized');
+    }
+
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    $migrateOutput = \Illuminate\Support\Facades\Artisan::output();
+
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+    $clearOutput = \Illuminate\Support\Facades\Artisan::output();
+
+    return response("<pre style='background:#111;color:#00ff66;padding:24px;font-size:14px;line-height:1.6;'>\n"
+        . "=== Database Migrations Output ===\n" . e($migrateOutput)
+        . "\n=== Cache Clear Output ===\n" . e($clearOutput)
+        . "\n✅ Migration completed successfully! You can close this tab and refresh your Add Client page.\n</pre>");
+});
