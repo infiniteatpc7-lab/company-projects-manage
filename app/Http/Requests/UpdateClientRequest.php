@@ -23,7 +23,7 @@ class UpdateClientRequest extends FormRequest
                 'max:255',
                 Rule::unique('clients')->ignore($this->client),
             ],
-            'phone' => 'required|string|max:50',
+            'phone' => 'nullable|string|max:50',
             'whatsapp' => 'nullable|string|max:50',
             'address' => 'nullable|string|max:500',
             'city' => 'nullable|string|max:100',

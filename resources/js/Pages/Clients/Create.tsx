@@ -100,14 +100,14 @@ export default function Create() {
                                     </div>
 
                                     <div>
-                                        <InputLabel htmlFor="phone" value="Phone Number *" />
+                                        <InputLabel htmlFor="phone" value="Phone Number" />
                                         <input
                                             id="phone"
                                             type="text"
                                             value={data.phone}
                                             onChange={(e) => setData('phone', e.target.value)}
                                             className="mt-1.5 flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary placeholder:text-muted-foreground"
-                                            placeholder="+1 (555) 000-0000"
+                                            placeholder="Optional"
                                         />
                                         <InputError message={errors.phone} className="mt-1.5" />
                                     </div>
