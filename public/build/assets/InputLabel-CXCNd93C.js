@@ -1,0 +1,1 @@
+import{t as e}from"./app-KpX-7ATd.js";var t=e();function n({message:e,className:n=``,...r}){return e?(0,t.jsx)(`p`,{...r,className:`text-sm text-red-600 `+n,children:e}):null}function r({value:e,className:n=``,children:r,...i}){return(0,t.jsx)(`label`,{...i,className:`block text-sm font-medium text-foreground `+n,children:e||r})}export{n,r as t};
