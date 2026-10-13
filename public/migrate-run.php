@@ -30,6 +30,11 @@ try {
     $exitCode = \Artisan::call('migrate', ['--force' => true]);
     echo \Artisan::output();
     echo "\n✅ Migrations completed successfully!\n";
+
+    // Run seeders (roles, permissions, admin user)
+    \Artisan::call('db:seed', ['--force' => true]);
+    echo \Artisan::output();
+    echo "✅ Database seeded (roles, permissions, admin user created)!\n";
 } catch (\Exception $e) {
     echo "❌ Migration error: " . $e->getMessage() . "\n";
 }
