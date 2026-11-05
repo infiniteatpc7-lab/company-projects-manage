@@ -1,4 +1,4 @@
-﻿import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft, Building2, AlignLeft, Calendar, ShieldAlert, Server } from 'lucide-react';
 import InputError from '@/Components/InputError';
@@ -13,8 +13,8 @@ export default function Edit({ server, clients, projects }: any) {
         managed_by: server.managed_by || 'Company',
         ip_address: server.ip_address || '',
         plan: server.plan || '',
-        purchase_date: server.purchase_date || '',
-        renewal_date: server.renewal_date || '',
+        purchase_date: server.purchase_date ? server.purchase_date.split('T')[0] : '',
+        renewal_date: server.renewal_date ? server.renewal_date.split('T')[0] : '',
         renewal_cost: server.renewal_cost || '',
         status: server.status || 'Active',
         notes: server.notes || '',

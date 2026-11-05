@@ -19,8 +19,8 @@ class Reminder extends Model
     ];
 
     protected $casts = [
-        'due_date' => 'date',
-        'reminder_date' => 'date',
+        'due_date' => 'date:Y-m-d',
+        'reminder_date' => 'date:Y-m-d',
     ];
 
     public function client()

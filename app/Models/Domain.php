@@ -21,8 +21,8 @@ class Domain extends Model
     ];
 
     protected $casts = [
-        'purchase_date' => 'date',
-        'renewal_date' => 'date',
+        'purchase_date' => 'date:Y-m-d',
+        'renewal_date' => 'date:Y-m-d',
         'renewal_cost' => 'decimal:2',
         'auto_renew' => 'boolean',
     ];

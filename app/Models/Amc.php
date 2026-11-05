@@ -20,8 +20,8 @@ class Amc extends Model
 
     protected $casts = [
         'amount' => 'decimal:2',
-        'start_date' => 'date',
-        'next_due_date' => 'date',
+        'start_date' => 'date:Y-m-d',
+        'next_due_date' => 'date:Y-m-d',
     ];
 
     public function client()

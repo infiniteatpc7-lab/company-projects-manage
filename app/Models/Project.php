@@ -18,8 +18,8 @@ class Project extends Model
     ];
 
     protected $casts = [
-        'start_date' => 'date',
-        'deadline' => 'date',
+        'start_date' => 'date:Y-m-d',
+        'deadline' => 'date:Y-m-d',
     ];
 
     public function client()

@@ -1,4 +1,4 @@
-﻿import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft, AlignLeft, Calendar, FileText } from 'lucide-react';
 import InputError from '@/Components/InputError';
@@ -11,8 +11,8 @@ export default function Edit({ amc, clients, projects }: any) {
         title: amc.title || '',
         amount: amc.amount || '',
         billing_cycle: amc.billing_cycle || 'Yearly',
-        start_date: amc.start_date || '',
-        next_due_date: amc.next_due_date || '',
+        start_date: amc.start_date ? amc.start_date.split('T')[0] : '',
+        next_due_date: amc.next_due_date ? amc.next_due_date.split('T')[0] : '',
         status: amc.status || 'Active',
         notes: amc.notes || '',
     });

@@ -19,8 +19,8 @@ class AmcPayment extends Model
 
     protected $casts = [
         'amount' => 'decimal:2',
-        'due_date' => 'date',
-        'collected_date' => 'date',
+        'due_date' => 'date:Y-m-d',
+        'collected_date' => 'date:Y-m-d',
     ];
 
     public function amc()

@@ -11,8 +11,8 @@ export default function Edit({ project, clients }: any) {
         project_type: project.project_type || '',
         website_url: project.website_url || '',
         status: project.status || 'Active',
-        start_date: project.start_date || '',
-        deadline: project.deadline || '',
+        start_date: project.start_date ? project.start_date.split('T')[0] : '',
+        deadline: project.deadline ? project.deadline.split('T')[0] : '',
         notes: project.notes || '',
     });
 

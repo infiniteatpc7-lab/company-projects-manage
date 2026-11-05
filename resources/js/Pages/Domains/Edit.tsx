@@ -1,4 +1,4 @@
-﻿import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft, Building2, AlignLeft, Calendar, ShieldAlert } from 'lucide-react';
 import InputError from '@/Components/InputError';
@@ -11,8 +11,8 @@ export default function Edit({ domain, clients, projects }: any) {
         domain_name: domain.domain_name || '',
         managed_by: domain.managed_by || 'Company',
         registrar: domain.registrar || '',
-        purchase_date: domain.purchase_date || '',
-        renewal_date: domain.renewal_date || '',
+        purchase_date: domain.purchase_date ? domain.purchase_date.split('T')[0] : '',
+        renewal_date: domain.renewal_date ? domain.renewal_date.split('T')[0] : '',
         renewal_cost: domain.renewal_cost || '',
         auto_renew: domain.auto_renew !== false,
         status: domain.status || 'Active',

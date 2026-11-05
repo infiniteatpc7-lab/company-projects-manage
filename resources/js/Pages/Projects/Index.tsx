@@ -9,6 +9,15 @@ export default function Index({ projects, filters, flash }: any) {
     const [status, setStatus] = useState(filters.status || '');
     const [visibleSuccess, setVisibleSuccess] = useState<string | null>(null);
 
+    const formatDate = (dateStr: string | null) => {
+        if (!dateStr) return '-';
+        const parts = dateStr.split('T')[0].split('-');
+        if (parts.length !== 3) return dateStr;
+        const [year, month, day] = parts;
+        const date = new Date(Number(year), Number(month) - 1, Number(day));
+        return date.toLocaleDateString();
+    };
+
     useEffect(() => {
         if (flash?.success) {
             setVisibleSuccess(flash.success);
@@ -101,6 +110,7 @@ export default function Index({ projects, filters, flash }: any) {
                                     <th className="px-6 py-3 font-medium">Project Name</th>
                                     <th className="px-6 py-3 font-medium">Client</th>
                                     <th className="px-6 py-3 font-medium">Type & URL</th>
+                                    <th className="px-6 py-3 font-medium">Start Date</th>
                                     <th className="px-6 py-3 font-medium">Status</th>
                                     <th className="px-6 py-3 font-medium text-right">Actions</th>
                                 </tr>
@@ -120,6 +130,9 @@ export default function Index({ projects, filters, flash }: any) {
                                                     <span>{project.project_type || '-'}</span>
                                                     <span className="text-muted-foreground">{project.website_url || '-'}</span>
                                                 </div>
+                                            </td>
+                                            <td className="px-6 py-3.5 text-foreground/80">
+                                                {formatDate(project.start_date)}
                                             </td>
                                             <td className="px-6 py-3.5">
                                                 <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium border ${
@@ -145,7 +158,7 @@ export default function Index({ projects, filters, flash }: any) {
                                                         </Dropdown.Link>
                                                         <Dropdown.Link href={route('projects.edit', project.id)} className="flex items-center text-sm py-2">
                                                             <Edit className="mr-2 h-4 w-4 text-muted-foreground" />
-                                                            Edit Client
+                                                            Edit Project
                                                         </Dropdown.Link>
                                                         <div className="border-t border-border my-1"></div>
                                                         <Dropdown.Link 
@@ -160,7 +173,7 @@ export default function Index({ projects, filters, flash }: any) {
                                                             className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 focus:bg-red-50 transition-colors text-left"
                                                         >
                                                             <Trash2 className="mr-2 h-4 w-4" />
-                                                            Delete Client
+                                                            Delete Project
                                                         </Dropdown.Link>
                                                     </Dropdown.Content>
                                                 </Dropdown>
@@ -169,7 +182,7 @@ export default function Index({ projects, filters, flash }: any) {
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">
+                                        <td colSpan={6} className="px-6 py-12 text-center text-muted-foreground">
                                             <div className="flex flex-col items-center justify-center">
                                                 <Search className="h-8 w-8 mb-3 opacity-20" />
                                                 <p>No projects found.</p>
